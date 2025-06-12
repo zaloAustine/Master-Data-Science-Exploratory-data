@@ -28,7 +28,6 @@ This repository contains exploratory data analysis (EDA) and preprocessing steps
    4. **Feature engineering & relationships**:
 
       * Open `DataProcessing/FeatureEngineering&Relationships.R` and **Source**.
-   5. **Run consolidated workflow**:
 
 5. **View outputs**:
 

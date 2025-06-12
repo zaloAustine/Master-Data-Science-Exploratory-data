@@ -4,6 +4,7 @@
 library(tidyverse)
 library(corrplot)
 library(ggplot2)
+library(readr)
 
 # Question 1
 data <- read_csv("/Users/AZalo/Downloads/kenya_student_data.csv")
@@ -148,8 +149,12 @@ corrplot(corr_mat,
          addCoef.col = "black", # show correlation values
          number.cex = 0.7)
 
-#nicee
+#Question 8
+#chi-squared test of independence
+chi <- chisq.test(
+  data$internet_access, data$academic_performance)
+print(chi)
 
-
-
+chi$observed
+chi$expected
 

@@ -64,6 +64,8 @@ This repository contains exploratory data analysis (EDA) and preprocessing steps
 ├── MRDC 911.Rproj                      # RStudio project file
 ├── kenya_student_data.csv              # Raw dataset (5,000 student records)
 ├── kenya_student_data_preprocessed.csv # Output after imputation & capping
-└── README.md                           # Project overview and instructions
+└── Report FilE 
+└── README.md  
+                        # Project overview and instructions
 ```
 

@@ -11,9 +11,6 @@ library(readr)
 #few rows). How many numerical and categorical variables are there?
 
 data <- read_csv("/Users/AZalo/Downloads/kenya_student_data.csv")
-#    - str() shows each column’s type and first values
-#    - glimpse() is a dplyr-friendly overview
-#    - head() prints the first 6 rows
 str(data) 
 glimpse(data)
 head(data)
@@ -90,28 +87,25 @@ ggplot(perf_df, aes(x = performance, y = count)) +
 
 
 # Question 4
-#isualize the distribution of study_hours_weekly using a histogram. How does
+#Visualize the distribution of study_hours_weekly using a histogram. How does
 #it vary between urban and rural students (use a faceted histogram)?
 ggplot(data, aes(x = study_hours_weekly)) +
   geom_histogram(
     binwidth = 5,           # each bar spans 5 hours
     fill     = "skyblue",   # bar fill color
     color    = "white"      # bar border color
-  ) +
-#Split into one panel per residency value
-  facet_wrap(~ residency) +
-# Add titles and axis labels
+  ) +facet_wrap(~ residency) +
   labs(
     title = "Weekly Study Hours: Urban vs. Rural Students",
     x     = "Study Hours per Week",
     y     = "Number of Students"
   ) +
-  # d) Apply a clean theme
   theme_minimal()
 
 
 # Question 5
-#Build the boxplot
+#Create boxplots of math_score by academic_performance and gender. What
+#patterns do you observe?
 ggplot(data, aes(
   x    = academic_performance,
   y    = math_score,
@@ -127,7 +121,8 @@ ggplot(data, aes(
 
 
 #Question 6 
-#Proportion Extracurricular activities proportions
+#Create boxplots of math_score by academic_performance and gender. What
+#patterns do you observe?
 extra_tab        <- table(data$extracurricular_activities)
 extra_prop       <- prop.table(extra_tab)                   # proportions
 extra_prop_desc  <- sort(extra_prop, decreasing = TRUE)     # sort high → low

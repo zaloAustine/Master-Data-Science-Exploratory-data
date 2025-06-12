@@ -7,6 +7,9 @@ library(ggplot2)
 library(readr)
 
 # Question 1
+#Load the dataset and display its structure (e.g., column names, data types, first
+#few rows). How many numerical and categorical variables are there?
+
 data <- read_csv("/Users/AZalo/Downloads/kenya_student_data.csv")
 #    - str() shows each column’s type and first values
 #    - glimpse() is a dplyr-friendly overview
@@ -27,7 +30,9 @@ cat("Categorical variables (", length(categorical_vars), "):\n", paste(categoric
 
 
 # Question 2
-#Identify numeric columns
+#Compute summary statistics (mean, median, min, max, etc.) for all numerical
+#variables (e.g., family_income, study_hours_weekly). What insights do these
+#provide about the data?
 numeric_data    <- data[ , is_numeric, drop = FALSE]
 
 #Compute summary stats via sapply over each column
@@ -59,7 +64,8 @@ print(summary_stats)
 
 
 # Question 3
-#Compute counts and proportions 
+#Create a bar plot to visualize the distribution of academic_performance. Is the
+#target variable balanced across its classes (Poor, Average, Good, Excellent)?
 perf_table <- table(data$academic_performance)
 
 #Convert to a data.frame for plotting
@@ -84,7 +90,8 @@ ggplot(perf_df, aes(x = performance, y = count)) +
 
 
 # Question 4
-#Create a faceted histogram
+#isualize the distribution of study_hours_weekly using a histogram. How does
+#it vary between urban and rural students (use a faceted histogram)?
 ggplot(data, aes(x = study_hours_weekly)) +
   geom_histogram(
     binwidth = 5,           # each bar spans 5 hours
@@ -133,7 +140,8 @@ fac_prop_desc   <- sort(fac_prop, decreasing = TRUE)
 print(fac_prop_desc)
 
 #Question 7
-#Extract numeric columns (exclude student_id if present)
+#Create a correlation matrix for numerical variables (excluding student_id) and
+#visualize it using a heatmap. Which pairs have the strongest correlations?
 is_num      <- sapply(data, is.numeric)
 if ("student_id" %in% names(data)) is_num["student_id"] <- FALSE
 num_data    <- data[ , is_num, drop = FALSE]
@@ -150,7 +158,8 @@ corrplot(corr_mat,
          number.cex = 0.7)
 
 #Question 8
-#chi-squared test of independence
+#Use a statistical test (e.g., chi-squared) to check if internet_access is associated
+#with academic_performance. Interpret the results.
 chi <- chisq.test(
   data$internet_access, data$academic_performance)
 print(chi)

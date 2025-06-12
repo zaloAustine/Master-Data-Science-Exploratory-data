@@ -9,7 +9,8 @@ library(ggplot2)
 data <- read_csv("/Users/AZalo/Downloads/kenya_student_data.csv")
 
 # Question 12
-#Detect outliers in family_income using the IQR method.
+#Detect outliers in family_income using the IQR method. How many outliers are
+#there, and what might they represent in a Kenyan context?
 income <- data$family_income
 
 #Compute IQR bounds 
@@ -31,13 +32,15 @@ cat("Total outliers: ", num_outliers, "\n")
 
 
 # Question 13
-#Cap outliers in family_income at the 1.5*IQR bounds
+#Cap outliers in family_income at the 1.5*IQR bounds. Visualize the distribution
+#before and after capping using boxplots.
+
 capped_income <- ifelse(
   income < lower_bound,  lower_bound,
   ifelse(income > upper_bound, upper_bound, income)
 )
 
-# 6. Plot boxplots before vs. after 
+#Plot boxplots before vs. after 
 par(mfrow = c(1, 2))  # two plots side by side
 
 boxplot(income,

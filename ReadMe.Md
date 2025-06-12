@@ -43,7 +43,7 @@ This repository contains exploratory data analysis (EDA) and preprocessing steps
   * `family_income` exhibited extreme values; 1.5×IQR capping reduced skew.
   * `study_hours_weekly` clustered around 10–20 hours, with few extreme low/high outliers.
 * **Target Balance**: `academic_performance` is imbalanced (majority in "Average"/"Good").
-* **Correlations**: Numeric features showed very low pairwise correlations (|r| < 0.04), indicating minimal multicollinearity.
+* **Correlations**: Numeric features showed very low correlations ,indicating minimal multicollinearity.
 * **Associations**: A χ² test revealed a significant link between `internet_access` and performance (p < 2.2e-16); students with home internet are over‑represented among higher performance categories.
 * **Feature Engineering**:
 
@@ -64,10 +64,6 @@ This repository contains exploratory data analysis (EDA) and preprocessing steps
 ├── MRDC 911.Rproj                      # RStudio project file
 ├── kenya_student_data.csv              # Raw dataset (5,000 student records)
 ├── kenya_student_data_preprocessed.csv # Output after imputation & capping
-├── plots/                              # (Optional) folder for saved figures
-│   ├── performance_barplot.png
-│   ├── study_hours_histogram.png
-│   └── ...
 └── README.md                           # Project overview and instructions
 ```
 
